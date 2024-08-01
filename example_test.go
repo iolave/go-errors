@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"gopkg.in/src-d/go-errors.v1"
+	"github.com/iolave/go-errors"
 )
 
 func ExampleKind_New() {

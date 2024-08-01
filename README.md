@@ -1,4 +1,4 @@
-# go-errors [![GoDoc](https://godoc.org/gopkg.in/src-d/go-errors.v1?status.svg)](https://godoc.org/gopkg.in/src-d/go-errors.v1) [![Build Status](https://travis-ci.org/src-d/go-errors.svg?branch=master)](https://travis-ci.org/src-d/go-errors) [![codecov](https://codecov.io/gh/src-d/go-errors/branch/master/graph/badge.svg)](https://codecov.io/gh/src-d/go-errors) [![codebeat badge](https://codebeat.co/badges/e0c5d481-6200-4112-9144-f750317421f0)](https://codebeat.co/projects/github-com-src-d-go-errors)
+<!--# go-errors [![GoDoc](https://godoc.org/gopkg.in/src-d/go-errors.v1?status.svg)](https://godoc.org/gopkg.in/src-d/go-errors.v1) [![Build Status](https://travis-ci.org/src-d/go-errors.svg?branch=master)](https://travis-ci.org/src-d/go-errors) [![codecov](https://codecov.io/gh/src-d/go-errors/branch/master/graph/badge.svg)](https://codecov.io/gh/src-d/go-errors) [![codebeat badge](https://codebeat.co/badges/e0c5d481-6200-4112-9144-f750317421f0)](https://codebeat.co/projects/github-com-src-d-go-errors)-->
 
 Yet another `errors` package, implementing error handling primitives with error wrapping and error tracing.
 
@@ -7,7 +7,7 @@ Yet another `errors` package, implementing error handling primitives with error 
 The recommended way to install go-errors is:
 
 ```
-go get -u gopkg.in/src-d/go-errors.v1
+go get -u github.com/iolave/go-errors
 ```
 
 ## Examples
