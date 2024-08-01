@@ -26,6 +26,17 @@ func (k *Kind) New(values ...interface{}) *Error {
 	}
 }
 
+func (k *Kind) NewHttpError(msg string, statusCode int, cause error) *HttpError {
+	return &HttpError{
+		kind:       k,
+		name:       k.Message,
+		statusCode: statusCode,
+		message:    msg,
+		cause:      cause,
+		stack:      NewStackTrace(1),
+	}
+}
+
 // Wrap creates a new Error of this Kind with the cause error, values can be
 // passed to it if the Kind was created using printf format.
 func (k *Kind) Wrap(cause error, values ...interface{}) *Error {
