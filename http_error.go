@@ -64,7 +64,7 @@ func (err *HttpError) Format(s fmt.State, verb rune) {
 	switch verb {
 	case 'v':
 		if s.Flag('+') {
-			io.WriteString(s, err.Error()+"\n")
+			io.WriteString(s, err.message+"\n")
 			err.stack.Format(s, verb)
 			return
 		}
