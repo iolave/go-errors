@@ -2,6 +2,7 @@ package errors
 
 import (
 	"fmt"
+	"github.com/pkg/errors"
 	"io"
 	"net/http"
 )
@@ -18,36 +19,37 @@ const (
 
 // Error represents an error of some Kind, implements the error interface
 type HttpError struct {
-	kind       *Kind      `json:"-"`
-	name       string     `json:"name"`
-	statusCode int        `json:"statusCode"`
-	message    string     `json:"message"`
-	cause      error      `json:"cause"`
-	stack      StackTrace `json:"stack"`
+	Kind       *Kind             `json:"-"`
+	Name       string            `json:"name"`
+	StatusCode int               `json:"statusCode"`
+	Message    string            `json:"message"`
+	Cause      error             `json:"cause"`
+	stackTrace StackTrace        `json:"-"`
+	Stack      errors.StackTrace `json:"stack"`
 }
 
 func (err *HttpError) Error() string {
-	if err.cause == nil {
-		return err.message
+	if err.Cause == nil {
+		return err.Message
 	}
 
-	return fmt.Sprintf(err.message, err.cause.Error())
+	return fmt.Sprintf(err.Message, err.Cause.Error())
 }
 
 // Cause returns the underlying cause of the error
-func (err *HttpError) Cause() error {
-	return err.cause
+func (err *HttpError) Cause2() error {
+	return err.Cause
 }
 
 // Unwrap returns the underlying cause of the error.
 // It implements a new optional error interface introduced in Go 1.13.
 func (err *HttpError) Unwrap() error {
-	return err.cause
+	return err.Cause
 }
 
 // StackTrace returns an stack trace of the error
 func (err *HttpError) StackTrace() StackTrace {
-	return err.stack
+	return err.stackTrace
 }
 
 // Format implements fmt.Formatter and can be formatted by the fmt package. The
@@ -64,14 +66,14 @@ func (err *HttpError) Format(s fmt.State, verb rune) {
 	switch verb {
 	case 'v':
 		if s.Flag('+') {
-			io.WriteString(s, err.name+": "+err.message+"\n")
-			err.stack.Format(s, verb)
+			io.WriteString(s, err.Name+": "+err.Message+"\n")
+			err.stackTrace.Format(s, verb)
 			return
 		}
 
 		fallthrough
 	case 's':
-		io.WriteString(s, err.name+": "+err.message)
+		io.WriteString(s, err.Name+": ")
 	case 'q':
 		fmt.Fprintf(s, "%q", err.Error())
 	}
