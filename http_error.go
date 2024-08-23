@@ -71,7 +71,7 @@ func (err *HttpError) Format(s fmt.State, verb rune) {
 
 		fallthrough
 	case 's':
-		io.WriteString(s, err.Error())
+		io.WriteString(s, err.name+": "+err.message)
 	case 'q':
 		fmt.Fprintf(s, "%q", err.Error())
 	}
