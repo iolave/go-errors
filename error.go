@@ -26,7 +26,7 @@ func (k *Kind) New(values ...interface{}) *Error {
 	}
 }
 
-func (k *Kind) NewHttpError(msg string, statusCode int, cause error) *HttpError {
+func (k *Kind) newHttpError(msg string, statusCode int, cause error) *HttpError {
 	return &HttpError{
 		kind:       k,
 		name:       k.Message,

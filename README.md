@@ -1,4 +1,7 @@
-<!--# go-errors [![GoDoc](https://godoc.org/gopkg.in/src-d/go-errors.v1?status.svg)](https://godoc.org/gopkg.in/src-d/go-errors.v1) [![Build Status](https://travis-ci.org/src-d/go-errors.svg?branch=master)](https://travis-ci.org/src-d/go-errors) [![codecov](https://codecov.io/gh/src-d/go-errors/branch/master/graph/badge.svg)](https://codecov.io/gh/src-d/go-errors) [![codebeat badge](https://codebeat.co/badges/e0c5d481-6200-4112-9144-f750317421f0)](https://codebeat.co/projects/github-com-src-d-go-errors)-->
+# Errors package for golang
+
+> [!WARNING]
+> All versions released prior to `v1.0.0` are to be considered [breaking changes](https://semver.org/#how-do-i-know-when-to-release-100)
 
 Yet another `errors` package, implementing error handling primitives with error wrapping and error tracing.
 
