@@ -58,6 +58,8 @@ func (err *HttpError) StackTrace() StackTrace {
 //	%v    see %s
 //	%+v   extended format. Each Frame of the error's StackTrace will
 //	      be printed in detail.
+//
+// TODO: add more info here
 func (err *HttpError) Format(s fmt.State, verb rune) {
 	switch verb {
 	case 'v':
