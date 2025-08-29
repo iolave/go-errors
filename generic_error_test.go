@@ -115,6 +115,15 @@ func TestWrap(t *testing.T) {
 		}
 	})
 
+	t.Run("should not wrap an error that is already an Error", func(t *testing.T) {
+		err := New("error")
+		w := string(err.(Error).JSON())
+		got := string(Wrap(err).(Error).JSON())
+
+		if got != w {
+			t.Fatalf("\n got:  %v\n want: %v", got, w)
+		}
+	})
 }
 
 func TestNew(t *testing.T) {

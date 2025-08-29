@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - `Wrap` panic when wrapping nil error.
-
+- `Wrap` no longer wraps errors that are an implementation of the `Error` interface.  
 
 ## [v1.0.0]
 

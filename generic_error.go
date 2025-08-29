@@ -59,13 +59,45 @@ func (e GenericError) JSON() []byte {
 	return b
 }
 
-// Wrap wraps an error into a GenericError. It sets the name
+// Wrap wraps an error in a GenericError. It sets the name
 // of the error to "error", the message to the original
 // error.Error() value and the original property to the
 // original error.
+//
+// If the given error is an Error, it will
+// be returned as is.
+//
+// You can assert that the returned error is of type
+// Error by doing:
+//
+//	  err := someFunctionThatReturnsError()
+//
+//	  // Using the Error interface
+//	  if err, ok  := errors.Wrap(err).(errors.Error); ok {
+//		fmt.Println(string(err.JSON()))
+//	  }
+//
+//	  // Using the HTTPError interface
+//	  if err, ok  := errors.Wrap(err).(*errors.HTTPError); ok {
+//		fmt.Println(err.StatusCode())
+//	  }
+//
+//	  // Using the GenericError interface
+//	  if err, ok  := errors.Wrap(err).(*errors.GenericError); ok {
+//		fmt.Println(err.Name)
+//	  }
+//
+//	  // Using your own Error implementation
+//	  if err, ok  := errors.Wrap(err).(*YourError); ok {
+//		// ...
+//	  }
 func Wrap(err error) error {
 	if err == nil {
 		return nil
+	}
+
+	if _, ok := err.(Error); ok {
+		return err
 	}
 
 	return &GenericError{
