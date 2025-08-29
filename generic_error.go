@@ -64,6 +64,10 @@ func (e GenericError) JSON() []byte {
 // error.Error() value and the original property to the
 // original error.
 func Wrap(err error) error {
+	if err == nil {
+		return nil
+	}
+
 	return &GenericError{
 		Name:     "error",
 		Message:  err.Error(),

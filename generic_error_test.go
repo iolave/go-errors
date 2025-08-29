@@ -109,6 +109,12 @@ func TestWrap(t *testing.T) {
 		}
 	})
 
+	t.Run("should return nil if given nil", func(t *testing.T) {
+		if got := Wrap(nil); got != nil {
+			t.Fatalf("expected nil, got %v", got)
+		}
+	})
+
 }
 
 func TestNew(t *testing.T) {
